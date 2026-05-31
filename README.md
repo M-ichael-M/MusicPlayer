@@ -61,12 +61,10 @@ The app includes a sample track list defined in `Music.kt`. Each track has the f
 - `cover`: Cover art resource ID (currently a placeholder).
 - `time`: Track duration in seconds (partially implemented).
 
-Sample tracks:
-- "Coraline" – Måneskin
-- "Mockingbird" – Eminem
-- "505" – Arctic Monkeys
-- "São Paulo" – The Weeknd
-- ... (full list in `Music.kt`)
+Included tracks (all sourced from [Pixabay](https://pixabay.com/music/) and free to use without attribution):
+- "Escape Your Love" – FASSounds (`R.raw.eyl`)
+- "Action Trailer Promo Rock" – MagpieMusic (`R.raw.atp`)
+- "Powerful Percussion" – EnergySound (`R.raw.pp`)
 
 ## Dependencies
 
