@@ -1,6 +1,5 @@
 package com.example.musicplayer.ui.screens
 
-import android.net.Uri
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
@@ -33,6 +32,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.core.net.toUri
 import androidx.media3.common.MediaItem
 import androidx.media3.exoplayer.ExoPlayer
 import com.example.musicplayer.R
@@ -52,7 +52,7 @@ fun MusicPlayer(
     LaunchedEffect(currentTrack) {
         player.clearMediaItems()
         val path = "android.resource://" + context.packageName + "/" + currentTrack.music
-        val mediaItem = MediaItem.fromUri(Uri.parse(path))
+        val mediaItem = MediaItem.fromUri(path.toUri())
         player.addMediaItem(mediaItem)
         player.prepare()
         if (isPlaying) {
@@ -67,7 +67,7 @@ fun MusicPlayer(
     }
 
     Column(modifier = Modifier.fillMaxSize()) {
-        LazyColumn(modifier = Modifier.weight(1f)) { // Ensures the LazyColumn takes up available space above the BottomBar
+        LazyColumn(modifier = Modifier.weight(1f)) {
             items(playList) { song ->
                 BodyItem(song = song, isPlaying = isPlaying && song.id == currentTrack.id, onPlayPauseClick = {
                     isPlaying = !isPlaying
@@ -75,7 +75,7 @@ fun MusicPlayer(
                         currentTrack = song
                         player.clearMediaItems()
                         val path = "android.resource://" + context.packageName + "/" + song.music
-                        val mediaItem = MediaItem.fromUri(Uri.parse(path))
+                        val mediaItem = MediaItem.fromUri(path.toUri())
                         player.addMediaItem(mediaItem)
                         player.prepare()
                         player.play()
@@ -194,34 +194,34 @@ fun BottomBar(isPlaying: Boolean, onPlayPauseClick: () -> Unit, onPreviousClick:
             Button(
                 onClick = onPreviousClick,
                 modifier = Modifier
-                    .size(80.dp) // Adjust the size as needed
+                    .size(80.dp)
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.previous),
                     contentDescription = "Previous",
-                    modifier = Modifier.size(80.dp) // Adjust the size to make the icon larger
+                    modifier = Modifier.size(80.dp)
                 )
             }
             Button(
                 onClick = onPlayPauseClick,
                 modifier = Modifier
-                    .size(120.dp) // Adjust the size as needed
+                    .size(120.dp)
             ) {
                 Image(
                     painter = painterResource(id = if (isPlaying) R.drawable.pause else R.drawable.play_arrow),
                     contentDescription = "Play/Pause Button",
-                    modifier = Modifier.size(120.dp) // Adjust the size to make the icon larger
+                    modifier = Modifier.size(120.dp)
                 )
             }
             Button(
                 onClick = onNextClick,
                 modifier = Modifier
-                    .size(80.dp) // Adjust the size as needed
+                    .size(80.dp)
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.next),
                     contentDescription = "Next",
-                    modifier = Modifier.size(80.dp) // Adjust the size to make the icon larger
+                    modifier = Modifier.size(80.dp)
                 )
             }
         }
