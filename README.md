@@ -32,7 +32,7 @@ The **MusicPlayer** app is a simple Android music player built with Jetpack Comp
 
 1. Clone the repository:
    ```bash
-   git clone <repository-URL>
+   git clone https://github.com/M-ichael-M/MusicPlayer
    ```
 2. Open the project in Android Studio.
 3. Add music files (MP3) to the `res/raw` folder and update the `musicList` in `Music.kt` to match the file names.
@@ -80,8 +80,6 @@ dependencies {
 
 ## Limitations and Possible Improvements
 
-- **No dynamic track loading**: The track list is static and requires manual updates in the code.
-- **Placeholder cover art**: All tracks use the same icon (`ic_launcher_background`).
 - **No playback progress**: No progress bar or duration display has been implemented.
 - **Possible improvements**:
   - Adding a progress bar and track duration display.
