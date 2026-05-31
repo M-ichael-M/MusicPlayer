@@ -1,76 +1,76 @@
 # MusicPlayer
 
-Aplikacja **MusicPlayer** to prosty odtwarzacz muzyczny na Androida, zbudowany przy użyciu Jetpack Compose i ExoPlayer. Umożliwia odtwarzanie listy utworów muzycznych z lokalnych zasobów aplikacji, z funkcjami takimi jak play/pause, przełączanie między utworami oraz wyświetlanie informacji o utworze (tytuł, artysta).
+The **MusicPlayer** app is a simple Android music player built with Jetpack Compose and ExoPlayer. It enables playback of a list of music tracks from local app resources, with features such as play/pause, switching between tracks, and displaying track information (title, artist).
 
-## Funkcjonalności
+## Features
 
-- Odtwarzanie utworów muzycznych z lokalnych zasobów (pliki raw).
-- Lista utworów z nazwą, artystą i okładką (placeholder).
-- Przyciski sterowania: Play/Pause, Previous, Next.
-- Animowana karta utworu z okrągłym kształtem.
-- Responsywny interfejs użytkownika oparty na Jetpack Compose.
-- Zarządzanie stanem odtwarzania za pomocą ExoPlayer.
+- Playback of music tracks from local resources (raw files).
+- Track list with name, artist, and cover art (placeholder).
+- Playback controls: Play/Pause, Previous, Next.
+- Animated track card with a circular shape.
+- Responsive user interface based on Jetpack Compose.
+- Playback state management via ExoPlayer.
 
-## Wymagania
+## Requirements
 
-- **Android SDK**: API 21 (Lollipop) lub nowszy.
-- **Kotlin**: Wersja 1.9.0 lub nowsza.
-- **Jetpack Compose**: Najnowsza stabilna wersja.
-- **ExoPlayer**: Wersja 2.19.1 lub nowsza.
-- **Zasoby muzyczne**: Pliki muzyczne w formacie MP3 umieszczone w folderze `res/raw`.
+- **Android SDK**: API 21 (Lollipop) or higher.
+- **Kotlin**: Version 1.9.0 or higher.
+- **Jetpack Compose**: Latest stable version.
+- **ExoPlayer**: Version 2.19.1 or higher.
+- **Music resources**: MP3 audio files placed in the `res/raw` folder.
 
-## Struktura projektu
+## Project Structure
 
-- **`MainActivity.kt`**: Główna aktywność aplikacji, inicjalizująca listę utworów i komponent `MusicPlayer`.
-- **`data/Music.kt`**: Model danych `Music` oraz funkcja `getPlayList` dostarczająca statyczną listę utworów.
-- **`ui/screens/MusicPlayer.kt`**: Komponenty UI, w tym:
-  - `MusicPlayer`: Główny ekran odtwarzacza.
-  - `BodyItem`: Karta reprezentująca pojedynczy utwór.
-  - `BottomBar`: Pasek sterowania z przyciskami Previous, Play/Pause, Next.
+- **`MainActivity.kt`**: The main activity of the app, initializing the track list and the `MusicPlayer` component.
+- **`data/Music.kt`**: The `Music` data model and the `getPlayList` function providing a static list of tracks.
+- **`ui/screens/MusicPlayer.kt`**: UI components, including:
+  - `MusicPlayer`: The main player screen.
+  - `BodyItem`: A card representing a single track.
+  - `BottomBar`: The control bar with Previous, Play/Pause, and Next buttons.
 
-## Instalacja
+## Installation
 
-1. Sklonuj repozytorium:
+1. Clone the repository:
    ```bash
-   git clone <URL-repozytorium>
+   git clone <repository-URL>
    ```
-2. Otwórz projekt w Android Studio.
-3. Dodaj pliki muzyczne (MP3) do folderu `res/raw` i zaktualizuj listę `musicList` w pliku `Music.kt` zgodnie z nazwami plików.
-4. Zsynchronizuj projekt z Gradle:
+2. Open the project in Android Studio.
+3. Add music files (MP3) to the `res/raw` folder and update the `musicList` in `Music.kt` to match the file names.
+4. Sync the project with Gradle:
    ```bash
    ./gradlew sync
    ```
-5. Uruchom aplikację na emulatorze lub fizycznym urządzeniu z Androidem.
+5. Run the app on an emulator or a physical Android device.
 
-## Użycie
+## Usage
 
-1. Po uruchomieniu aplikacji wyświetli się lista utworów zdefiniowana w `musicList`.
-2. Kliknij przycisk Play na karcie utworu, aby rozpocząć odtwarzanie.
-3. Użyj paska sterowania na dole ekranu, aby:
-   - Wstrzymać/wznowić odtwarzanie (Play/Pause).
-   - Przejść do poprzedniego utworu (Previous).
-   - Przejść do następnego utworu (Next).
+1. When the app launches, it displays the track list defined in `musicList`.
+2. Click the Play button on a track card to start playback.
+3. Use the control bar at the bottom of the screen to:
+   - Pause/resume playback (Play/Pause).
+   - Go to the previous track (Previous).
+   - Go to the next track (Next).
 
-## Lista utworów
+## Track List
 
-Aplikacja zawiera przykładową listę utworów zdefiniowaną w `Music.kt`. Każdy utwór ma następujące atrybuty:
-- `id`: Unikalny identyfikator.
-- `name`: Tytuł utworu.
-- `artist`: Nazwa artysty.
-- `music`: ID zasobu muzycznego (R.raw.<nazwa_pliku>).
-- `cover`: ID zasobu okładki (obecnie placeholder).
-- `time`: Długość utworu w sekundach (częściowo zaimplementowane).
+The app includes a sample track list defined in `Music.kt`. Each track has the following attributes:
+- `id`: Unique identifier.
+- `name`: Track title.
+- `artist`: Artist name.
+- `music`: Music resource ID (`R.raw.<filename>`).
+- `cover`: Cover art resource ID (currently a placeholder).
+- `time`: Track duration in seconds (partially implemented).
 
-Przykładowe utwory:
+Sample tracks:
 - "Coraline" – Måneskin
 - "Mockingbird" – Eminem
 - "505" – Arctic Monkeys
 - "São Paulo" – The Weeknd
-- ... (pełna lista w `Music.kt`)
+- ... (full list in `Music.kt`)
 
-## Zależności
+## Dependencies
 
-W pliku `build.gradle` (moduł aplikacji) należy dodać następujące zależności:
+Add the following dependencies to your `build.gradle` (app module):
 
 ```gradle
 dependencies {
@@ -80,17 +80,17 @@ dependencies {
 }
 ```
 
-## Ograniczenia i możliwe ulepszenia
+## Limitations and Possible Improvements
 
-- **Brak dynamicznego wczytywania utworów**: Lista utworów jest statyczna i wymaga ręcznej aktualizacji w kodzie.
-- **Placeholder okładek**: Wszystkie utwory używają tej samej ikony (`ic_launcher_background`).
-- **Brak postępu odtwarzania**: Nie zaimplementowano paska postępu ani wyświetlania czasu trwania.
-- **Możliwe ulepszenia**:
-  - Dodanie paska postępu i czasu trwania utworu.
-  - Wczytywanie utworów z pamięci urządzenia.
-  - Obsługa okładek z metadanych MP3.
-  - Dodanie losowego odtwarzania i pętli.
+- **No dynamic track loading**: The track list is static and requires manual updates in the code.
+- **Placeholder cover art**: All tracks use the same icon (`ic_launcher_background`).
+- **No playback progress**: No progress bar or duration display has been implemented.
+- **Possible improvements**:
+  - Adding a progress bar and track duration display.
+  - Loading tracks from device storage.
+  - Supporting cover art from MP3 metadata.
+  - Adding shuffle and repeat modes.
 
-## Licencja
+## License
 
-Projekt jest dostępny na licencji MIT. Szczegóły w pliku `LICENSE`.
+This project is available under the MIT License. See the `LICENSE` file for details.
